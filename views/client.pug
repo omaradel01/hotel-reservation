@@ -1,0 +1,92 @@
+doctype html
+html
+  head
+    title Hotels Hero | Home
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/bootstrap.min.css')
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='/css/all.min.css')
+    link(rel='stylesheet' href='/css/styles.css')
+
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container-fluid
+        a.navbar-brand.main-color.fw-bold() Hotels Hero
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.me-auto.mb-2.mb-lg-0
+            li.nav-item
+              a.nav-link.active(aria-current='page' href='/home') Home
+            li.nav-item
+              a.nav-link(href='/my-reservations') Reservations
+          ul.navbar-nav.ml-auto.mb-2.mb-lg-0
+            li.nav-item.dropdown
+              a#navbarDropdown.nav-link.dropdown-toggle(role='button' data-bs-toggle='dropdown' aria-expanded='false')
+                img.img-fluid(src='assets/user.png' width='24' height='24')
+                = ` ${currentUser.firstName} ${currentUser.lastName}`
+              ul.dropdown-menu(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href='/me')
+                    input.btn.btn-login.w-100.m-0(type='submit' value='Account Information')
+                li
+                  hr.dropdown-divider
+                li
+                  a.dropdown-item()
+                    form#signoutForm
+                      input.btn.btn-login.w-100.m-0(type='submit' value='Sign out')
+    section.home
+      .home-banner.js-fullheight(style="background-image: url('assets/h-1.jpg');")
+        .overlay
+        .container
+          .row.no-gutters.slider-text.js-fullheight.align-items-center.justify-content-center
+            .col-md-12.text-right.bannerheader
+              h2.header-22.mb-4.animate__animated.animate__fadeInDown Hotels Hero
+              h6.header-66.animate__animated.animate__fadeInDown(data-wow-delay='400ms')
+                | Best place to make reservation with the lowest prices in the middle east
+      .hotel-search-form-area.animate__animated.animate__fadeInDown
+        .container-fluid
+          .hotel-search-form
+            form#search(action='/search')
+              .row.justify-content-center.align-items-Start
+                .col-lg-3
+                  .form-group.mb-1
+                    label(for='city') City
+                    select#city.form-control.form-select(name='city')
+                      option(value='') Click here to choose a city
+                      - for(let i = 0; i < cities.length; i++)
+                        option(value=`${cities[i].slug}`)= cities[i].name
+                  .form-group
+                    label(for='numberOfRooms') Number Of Rooms
+                    input#numberOfRooms.form-control(min='1' type='number' name='numberOfRooms' placeholder='Enter Number Rooms')
+                .col-lg-3
+                  .form-group.mb-1
+                    label(for='checkIn') Check In Date
+                    input#CheckInDate.form-control(required='' type='date' name='CheckInDate')
+                    p#DateValidator(style='color: #F8690D; font-style: oblique;')
+                  .form-group
+                    label(for='checkOut') Check Out Date
+                    input#CheckOutDate.form-control(required='' type='date' name='CheckOutDate')
+                    p#DateChecker(style='color: #F8690D; font-style: oblique;')
+                .col-lg-3
+                  .form-group.mb-1
+                    label(for='NumberOfAdults') Number Of Adults
+                    input#NoOfAdults.form-control(required='' name='NoOfAdults' type='number' min='1' placeholder='Enter Number of Adults')
+                  .form-group
+                    label(for='NumberOfChildren') Number Of Children
+                    input#NoOfChildren.form-control(required='' name='NoOfChildren' type='number' min='0' placeholder='Enter Number of Children')
+                .col-lg-3
+                  .form-group.mb-1
+                    input.btn.btn-login.btn-block.w-100(style='margin: 40px 40px 65px 0;' type='submit' value='Search here')
+                  .form-group
+                    p.text
+                      | Enjoy More Than 100+ Reservation with Great Offers
+
+    script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js' integrity='sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU' crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js' integrity='sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj' crossorigin='anonymous')
+    script(src='/bundle.js')

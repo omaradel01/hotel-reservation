@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    title Hotels Hero | Register
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='css/bootstrap.min.css')
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='css/all.min.css')
+    link(rel='stylesheet' href='css/styles.css')
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    script.
+      emails = '#{emails}'
+      usernames = '#{usernames}'
+
+  body
+    .register
+      .d-flex
+        .reg-side
+          h1.header-1.main-color.mb-2 Hotels Hero
+          p.text
+            | Check the highest ratings hotels with all information needed with just few steps
+          img.img-fluid(src='assets/banner-register.jpg')
+        .reg-form
+          form#registration_form(autocomplete='off')
+            a(href='/login' style='color: #007aab;') Already have an account ?
+            .row.mb-0
+              .col-md-6
+                .form-group
+                  label(for='FirstName')
+                    | First Name
+                  input#firstName.form-control.w-100.d-inline-block(type='text' name='FirstName' placeholder='enter your First Name' value='' required='')
+              .col-md-6
+                .form-group
+                  label(for='LastName')
+                    | Last Name
+                  input#lastName.form-control.w-100.d-inline-block(type='text' placeholder='enter your Last Name' name='LastName' value='' required='')
+            div
+              .form-group
+                label(for='email')
+                  | Email
+                input#email.form-control(type='email' name='email' placeholder='enter your email' oninput='email_validation(this)' required='')
+                p#demo2(style='color: #F8690D;')
+              .form-group
+                label(for='username')
+                  | Username
+                input#username.form-control(type='text' name='username' placeholder='enter your username' required='' minlength=4)
+                p#demo(style='color: #F8690D;')
+            // START CAPTCHA
+            br
+            .capbox.d-flex.align-items-center
+              #CaptchaDiv
+              .capbox-inner
+                input#txtCaptcha(type='hidden')
+                input#CaptchaInput.form-control(type='text' required name='CaptchaInput' placeholder='Enter the captcha' size='15')
+              input#tryNewCaptcha.btn.btn-login(type='button' value='Try new Captcha')
+            // END CAPTCHA
+            input#submit.btn.btn-login.btn-block.w-100(type='submit' value='Register')
+
+    script(src='bundle.js') 
+

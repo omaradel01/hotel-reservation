@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title Hotels Hero | Login
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='css/bootstrap.min.css')
+    link(rel='preconnect' href='https://fonts.gstatic.com')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap' rel='stylesheet')
+    link(rel='stylesheet' href='css/all.min.css')
+    link(rel='stylesheet' href='css/styles.css')
+
+  body
+    .banner-login
+      .container
+        .row.align-items-center
+          .form-login
+            .col-md-12
+              span.login-form-logo
+                i.fas.fa-user
+              h1.header-1.text-center.main-color Log In
+              form#login_form(autocomplete='off')
+                .form-group
+                  label(for='username_or_email')
+                    | Email
+                  input#email.form-control(type='email' name='email' placeholder='enter your email')
+                .form-group
+                  label(for='password')
+                    | Password
+                  .pass-element(style='position:relative')
+                    input#password.form-control(type='password' minlength=8 name='password' placeholder='enter your password' )
+                    span#viewOrHidePass.fas.fa-eye(style='position: absolute;top: 11px;right: 5px;')
+                input#submit.btn.btn-block.w-100.btn-login(type='submit' value='Login')
+              a(href='/register' style='color: black;') Don&apos;t have an account ?
+
+    script(src='/bundle.js')
